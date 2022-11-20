@@ -61,6 +61,25 @@ $(document).ready(function() {
         window.dancers[i].setPosition(y, x);
       }
     }
+    for (var i = 0; i < window.dancers.length; i++) {
+      if (window.dancers[i] instanceof makeMoshDancer) {
+        var distance = 1000;
+        var x;
+        var y;
+        for (var j = 0; j < window.dancers.length; j++) {
+          currentDistance = Math.sqrt(Math.pow(window.dancers[j].top, 2) + Math.pow(window.dancers[j].left, 2));
+          if (currentDistance < distance) {
+            distance = currentDistance;
+            x = window.dancers[j].left;
+            y = window.dancers[j].top;
+          }
+        }
+        window.dancers[i].follow(y, x);
+      }
+    }
   });
+
+
+
 });
 
