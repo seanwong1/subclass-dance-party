@@ -52,5 +52,15 @@ $(document).ready(function() {
     }
 
   });
+
+  $('body').on('mousemove', function(event) {
+    var x = event.clientX;
+    var y = event.clientY;
+    for (var i = 0; i < window.dancers.length; i++) {
+      if (window.dancers[i] instanceof makeFollowDancer) {
+        window.dancers[i].setPosition(y, x);
+      }
+    }
+  });
 });
 
